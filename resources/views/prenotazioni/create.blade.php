@@ -9,6 +9,15 @@
 @section('content')
    <form method="POST" action="{{route('prenotazioni.store')}}">
       @CSRF
+      @if ($errors->any())
+         <div class="alert alert-danger">
+         <ul>
+      @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+      @endforeach
+         </ul>
+         </div>
+      @endif
      <div class="form-group">
        <label for="nome">Nominativo</label>
        <input type="text" class="form-control" id="nome" name="guest_full_name">

@@ -50,6 +50,16 @@ class MyController extends Controller
      */
     public function store(Request $request)
     {
+
+      $request->validate([
+         'guest_full_name' => 'required|max:255',
+         'guest_credit_card' => 'required|numeric',
+         'room' => 'required|numeric|max: 9999',
+         'from_date' => 'required',
+         'to_date' => 'required',
+         'more_details' => 'required|max:9999'
+      ]);
+
       $nuova_prenotazione = new prenotazioni();
 
       $nuova_prenotazione->guest_full_name = $request->input('guest_full_name');
@@ -97,6 +107,16 @@ class MyController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+      $request->validate([
+          'guest_full_name' => 'required|max:255',
+          'guest_credit_card' => 'required|numeric',
+          'room' => 'required|numeric|max: 9999',
+          'from_date' => 'required',
+          'to_date' => 'required',
+          'more_details' => 'required|max:9999'
+      ]);
+      
       $vecchia_prenotazione = prenotazioni::find($id);
 
       $vecchia_prenotazione->guest_full_name = $request->input('guest_full_name');
