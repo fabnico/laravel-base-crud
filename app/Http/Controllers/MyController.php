@@ -84,7 +84,8 @@ class MyController extends Controller
      */
     public function edit($id)
     {
-        //
+      $edit_prenotazione = prenotazioni::find($id);
+      return view('prenotazioni.edit', compact('edit_prenotazione'));
     }
 
     /**
@@ -96,7 +97,18 @@ class MyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $vecchia_prenotazione = prenotazioni::find($id);
+
+      $vecchia_prenotazione->guest_full_name = $request->input('guest_full_name');
+      $vecchia_prenotazione->guest_credit_card = $request->input('guest_credit_card');
+      $vecchia_prenotazione->room = $request->input('room');
+      $vecchia_prenotazione->from_date = $request->input('from_date');
+      $vecchia_prenotazione->to_date = $request->input('to_date');
+      $vecchia_prenotazione->more_details = $request->input('more_details');
+
+      $vecchia_prenotazione->save();
+
+      return redirect()->route('prenotazioni.index');
     }
 
     /**

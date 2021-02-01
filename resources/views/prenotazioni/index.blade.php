@@ -28,6 +28,7 @@ Index
              <td>{{ $prenotazione->to_date }}</td>
              <td>{{ $prenotazione->more_details}}</td>
              <td><a href="{{route('prenotazioni.show', $prenotazione->id)}}">Scheda prenotazione</a></td>
+             <td><a href="{{route('prenotazioni.edit', $prenotazione->id)}}">Modifica prenotazione</a></td>
           </tr>
         @endforeach
      </tbody>
