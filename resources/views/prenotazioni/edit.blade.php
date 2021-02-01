@@ -10,7 +10,6 @@
    <form method="POST"  action="{{route('prenotazioni.update', $edit_prenotazione)}}">
       @CSRF
       @method('PUT')
-      @CSRF
       @if ($errors->any())
          <div class="alert alert-danger">
          <ul>
